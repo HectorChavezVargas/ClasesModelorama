@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases Modelorama</title>
+    <script src="https://kit.fontawesome.com/76121df6a2.js" crossorigin="anonymous"></script>
+    <link rel="icon" th:href="@{/img/icono.png}">>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/templatemo-xtra-blog.css}" rel="stylesheet">
+    <!--VIEWER-->
+    <link rel="stylesheet" th:href="@{/css/viewer.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<header class="tm-header" id="tm-header">
+    <div class="tm-header-wrapper">
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="tm-site-header">
+            <div class="mb-3 mx-auto tm-site-logo"><img th:src="@{/img/icono.png}" alt="" width="100%"
+                                                        height="100%"></div>
+            <h1 class="text-center">Modelorama</h1>
+        </div>
+        <nav class="tm-nav" id="tm-nav">
+            <ul>
+                <li class="tm-nav-item"><a th:href="@{/}" class="tm-nav-link">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Nueva Venta
+                </a></li>
+                <li class="tm-nav-item"><a th:href="@{/inventarios}" class="tm-nav-link">
+                    <i class="fa-solid fa-box-archive"></i>
+                    Inventarios
+                </a></li>
+                <li class="tm-nav-item active"><a th:href="@{/reportes}" class="tm-nav-link">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Reportes
+                </a></li>
+                <li class="tm-nav-item"><a th:href="@{/promociones}" class="tm-nav-link">
+                    <i class="fa-solid fa-percent"></i>
+                    Promociones
+                </a></li>
+                <li class="tm-nav-item"><a th:href="@{/soporte}" class="tm-nav-link">
+                    <i class="fa-solid fa-headset"></i>
+                    Soporte
+                </a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="container-fluid">
+    <main class="tm-main">
+        <!-- Search form -->
+        <div class="row tm-row">
+            <div class="col-12">
+                <form method="post" th:action="@{/reportes/buscar}" class="form-inline tm-mb-80 tm-search-form">
+                    <img th:data-original="@{/img/DiagramaReportes.png}" th:src="@{/img/TituloReportes.jpg}" alt="" style="width:40%; height:40%; padding-right:15px; cursor:pointer;" class="pb-2 d-none d-sm-none d-md-block rounded mx-auto img-fluid docs-pictures clearfix">
+                    <input th:value="${search}" class="form-control tm-search-input" name="search" type="text" placeholder="Buscar..." aria-label="Search">
+                    <button class="tm-search-button" type="submit">
+                        <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="row tm-row">
+            <article th:each="clase:${clases}" class="col-12 col-md-6 tm-post">
+                <hr class="tm-hr-primary">
+                <a th:href="@{/post/reportes/}+${clase.getName()}" class="effect-lily tm-post-link tm-pt-60">
+                    <h2 th:text="${clase.getName()}" class="tm-pt-30 tm-color-primary tm-post-title"></h2>
+                </a>
+                <p th:text="${clase.getDescription()}" class="tm-pt-30" style="display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden;">
+                </p>
+                <hr>
+            </article>
+        </div>
+        <footer class="row tm-row">
+            <hr class="col-12">
+            <div class="col-md-6 col-12 tm-color-gray">
+                Diseñador: <a rel="nofollow" target="_parent" class="tm-external-link">Héctor Chávez Vargas</a>
+            </div>
+            <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                Copyright 2021 Praxis.
+            </div>
+        </footer>
+    </main>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/templatemo-script.js"></script>
+<script src="js/viewer.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
